@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+".\main.o"
+".\boardlib.o"
+".\stm32f10x_init.o"
+".\delay.o"
+".\interrupt.o"
+".\startup_stm32f10x_hd.o"
+".\keyfi.o"
+".\dataproces.o"
+".\oled_i2c.o"
+".\stm32_i2c.o"
+".\motordrive.o"
+".\servo.o"
+".\atorg.o"
+".\wifidevice.o"
+".\syn500r.o"
+".\eepflash.o"
+".\stm32_flash.o"
+".\ps2.o"
+".\at_driver.o"
+".\at_runing.o"
+".\lxu_atrisc.o"
+".\pid.o"
+--library_type=microlib --strict --scatter ".\ult.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\ult.map" -o .\ult.axf
