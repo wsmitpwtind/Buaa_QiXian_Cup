@@ -2,7 +2,7 @@
 #include "stm32f10x_Init.h"
 #include "stm32f10x_type.h"
 #include "delay.h"
-#include	<stdio.h>
+
 
 
 /********************************************************
@@ -97,7 +97,7 @@ void BeatHandle_delay(void)
 //获取系统运行时间，程序中使用频繁，返回值单位：毫秒
 ulong SysRunTime(void)
 {
-	printf("|-----------SysRunTime-----------|\r\n");
+
 	ulong i=0,k=0;
 	//这里的话高要求应该用中断挂起
 	i=SysRunTimeCnt;
@@ -284,7 +284,6 @@ void SinglePulseStart(uchar Channel,usint us, void (*UFun)())
 
 void BeatHandle_SinglePulse(void)
 {
-	printf("|-----------BeatHandle_SinglePulse-----------|\r\n");
 	uchar i=0;
 	usint TIMSR=0;
 	
@@ -340,7 +339,7 @@ GapTime：每次间隔GapTime毫秒后返回真
 */
 
 ulong WaitTrueLastTime[10]={0,0,0,0,0,0,0,0,0,0};
-
+ulong Time_Flag[2]={0,0};
 
 uchar WaitTrue(uchar Num,ulong GapTime)
 {
@@ -358,7 +357,34 @@ uchar WaitTrue(uchar Num,ulong GapTime)
 		return 0;
 }
 
+void Init_time()
+{
+	static ulong	Temp=0;
+	 Temp=SysRunTime();
+	 Time_Flag[0]=Temp;
+	 Time_Flag[1]=Temp;
+}
 
+void TimeReload()
+{
+	static ulong	Temp=0;
+	 Temp=SysRunTime();
+	 Time_Flag[0]=Temp;
+	 Time_Flag[1]=Temp;
+}
+
+uchar TimeOn(ulong GapTime)
+{
+	static ulong	Temp=0;
+	ulong	i=Time_Flag[0]+GapTime;
+	 Temp=SysRunTime();
+	 Time_Flag[1]=Temp;
+		if(  Temp >= i )
+		{
+			return 1;
+		}
+		return 0;
+}
 
 
 

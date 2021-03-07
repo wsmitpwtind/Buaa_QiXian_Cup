@@ -1,7 +1,7 @@
 #include	"MotorDrive.h"
 #include 	"DataProces.h"
 #include	"PID.h"
-#include	<stdio.h>
+
 
 #define  MotorRedRatio			30  //电机减速比
 #define  MotorWheelPerimeter	201 //轮子周长，单位mm
@@ -56,7 +56,6 @@ MotCD_En;
 */
 void MotA(int val)
 {
-	printf("|-----------MotA-----------|\r\n");
 	if(val>20)
 	{
 		TIM2_CCR1=val+1000;	TIM2_CCR2=0;
@@ -184,7 +183,7 @@ int HallDir[4]={0,0,0,0};
 
 void EncoderA_IRQ(void)
 {
-			printf("|-----------EncoderA_IRQ-----------|\r\n");
+
 	static uchar trun=0;
 	long i=0;
 	
@@ -265,7 +264,7 @@ void EncoderD_IRQ(void)
 
 void BeatHandle_Encoder(void)
 {
-		printf("|-----------BeatHandle_Encoder-----------|\r\n");
+
 	static uchar Cnt=0;
 	long temp=0;
 	uchar i=0,k=0;
@@ -392,7 +391,7 @@ void set_walkingmotor_speed(int Speed1, int Speed2,int Speed3, int Speed4)
 	int SPD2=0;
 	int SPD3=0;
 	int SPD4=0;
-  printf("|-----------set_walkingmotor_speed-----------|\r\n");
+
 	SPD1=(long)Speed1*MotorRedRatio*10/MotorWheelPerimeter;
 	SPD2=(long)Speed2*MotorRedRatio*10/MotorWheelPerimeter;   //放大10倍
 	SPD3=(long)Speed3*MotorRedRatio*10/MotorWheelPerimeter;
@@ -417,15 +416,14 @@ long MileageD_mm=0;
 void GetMileage(void)
 {
 MileageA_mm=( Odometer[0]*MotorWheelPerimeter)/(MotorRedRatio*MotMagNumber);
-  printf("A\r\n");
+
 MileageB_mm=( Odometer[1]*MotorWheelPerimeter)/(MotorRedRatio*MotMagNumber); 
-	printf("B\r\n");
+
 MileageC_mm=( Odometer[2]*MotorWheelPerimeter)/(MotorRedRatio*MotMagNumber);
-	printf("C\r\n");
+
 MileageD_mm=( Odometer[3]*MotorWheelPerimeter)/(MotorRedRatio*MotMagNumber);
-	printf("D\r\n");
-printf("|-----------GetMileage-----------|\r\n");
-printf("||||||||||||||||||||||||||||||||||\r\n");
+
+
 
 }
 

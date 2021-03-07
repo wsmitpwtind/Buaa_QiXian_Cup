@@ -18,7 +18,7 @@ char  null[4]; //由于STM32F4存储是4字节的，所以预留4个
 	
 }_TYPE_EEPROM_PACK;
 
-
+void PID_Data_Recived(long P,long I,long D);
 void EEPFlashInit(void);
 void EEPFlash_Write(usint Addr,uchar *IP,usint Num);
 void EEPFlash_Read(usint Addr,uchar *IP,usint Num);

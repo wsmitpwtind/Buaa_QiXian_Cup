@@ -167,7 +167,7 @@ void UART4_IRQHandler(void)
 void UART5_IRQHandler(void)
 {
 	uchar UD=USART5_DR;
-	WIFIUART_IRQ(UD);
+	//WIFIUART_IRQ(UD);
 	
 }
 

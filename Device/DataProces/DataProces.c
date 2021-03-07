@@ -338,7 +338,7 @@ buf[i]=FD;
 
 
 
-svoid FIFO_long(long FD,long *buf,uchar LEN)
+void FIFO_long(long FD,long *buf,uchar LEN)
 {
 uchar i;
 for(i=0;i<(LEN-1);i++)

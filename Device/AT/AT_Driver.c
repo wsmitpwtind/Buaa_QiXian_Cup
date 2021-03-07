@@ -3,7 +3,7 @@
 #include	"LXU_AtRISC.h"
 #include	"stm32f10x_Init.h"
 #include	"EEPFlash.h"
-#include	<stdio.h>
+
 
 extern _TYPE_EEPROM_PACK SYS_Cfg;
 
@@ -146,7 +146,7 @@ AT_Send_End();
 void Set_MotSPDPID(uchar type,long P,long I,long D)
 	
 {
-	printf("|-----------Set_MotSPDPID-----------|\r\n");
+
 	if(type)	 //==1,÷ª≤È—Ø
 	{
 		AT_Send_String("OK ");

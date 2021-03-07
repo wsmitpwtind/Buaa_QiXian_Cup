@@ -7,7 +7,7 @@
 #include "stm32f10x_Init.h"
 #include "MotorDrive.h"
 #include "Servo.H"
-#include	<stdio.h>
+
 
 #define _AT_TimeOutSET 20  //5ms计数20次为溢出
 
@@ -59,7 +59,7 @@ void ATCommInit(void)
 {
 	
 UART1_Clear_RL_Mark();
-USART_Init(1,115200);	//串口2初始化
+//USART_Init(1,115200);	//串口2初始化
 USART1_CR1|=(1<<5);		//使能USART接收中断
 Nvic_Init(2,1,1,USART1_IRQChannel); 
 UART1_Clear_RL_Mark();
@@ -71,7 +71,7 @@ UART1_Clear_RL_Mark();
 /*************串口1接收中断********/
 void ATUART_RQHandler(uchar UD)
 {
-	printf("|-----------ATUART_RQHandler-----------|\r\n");
+
 	uchar re=0;
 	re=AT_Flow_ReceByte(UD);
 	if( re==0x41)         //已经接收到正确的头,开始计数，整个指令时间不得大于溢出时间
@@ -161,7 +161,7 @@ int gap='a'-'A';
 
 uchar AT_CompareChar(uchar Mode,uchar Plen,uchar Type,char* Cp)
 {
-				printf("|-----------AT_CompareChar-----------|\r\n");
+
 uchar k;
 
 if(strlen(Cp)==0) return _onlyAT;  //为AT指令
@@ -193,7 +193,7 @@ return 0xff;
 void AT_Order_handler(_Type_OutForm FInfo)
 {
 	uchar i;
-  printf("|-----------AT_Order_handler-----------|\r\n");
+
 	i=AT_CompareChar(FInfo.Type,FInfo.PaNum+FInfo.StrNum,FInfo.DS_Flag,FInfo.NaBuf);
 	switch(i)
 	{
@@ -228,13 +228,13 @@ void AT_CommRunning(void)
 	if(AT_Order_Finish)
 	{
 		AT_Order_Finish=0;
-				printf("|-----------AT_ParamCount-----------|\r\n");
+
 		i=AT_ParamCount(&_OutFormP);
 		if(i==0)//参数解算
 		{
-						printf("|-----------AT_Order_handler-----------|\r\n");
+
 			AT_Order_handler(_OutFormP);
-			printf("||||||||||||||Recived|||||||||||||\r\n");
+
 		}
 		
 	}

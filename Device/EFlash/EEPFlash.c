@@ -34,6 +34,12 @@ _EFile_Magic_String,	//EFile中的起始文件标示
 
 _TYPE_EEPROM_PACK SYS_Cfg_last;
 
+void PID_Data_Recived(long P,long I,long D)
+{
+	  SYS_Cfg.P=P;
+		SYS_Cfg.I=I;
+		SYS_Cfg.D=D;
+}
 
 int EFile_Read(usint Reg_Adds,uchar *buf,usint R_LEN)
 {

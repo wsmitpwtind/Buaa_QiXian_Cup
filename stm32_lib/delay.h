@@ -38,7 +38,7 @@ void  SysTick_Init(void);
 void SysTimeBase_Init(void) ;
 void  BeatHandle_delay(void);
 void  delay(ulong ms);
-ulong SysRunTime(void);
+ulong SysRunTiygme(void);
 
 
 void  TimerStart(uchar change);
@@ -63,7 +63,8 @@ void TaskLineSetp_Start(uchar Num);
 void TaskLineSetp_Stop(uchar Num);
 uchar TaskLineSetp_Get(uchar Num);
 
-
-
+void Init_time(void);
+void TimeReload(void);
+uchar TimeOn(ulong GapTime);
 #endif
 

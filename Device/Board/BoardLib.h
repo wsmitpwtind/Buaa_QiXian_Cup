@@ -10,12 +10,12 @@
 #include 		"KeyFI.h"
 #include		"MotorDrive.h"
 #include 		"stdio.h"
-#include 		"OLED_I2C.h"
 #include 		"STM32_I2C.H"
 #include		"MotorDrive.h"
 #include		"Servo.H"
 #include		"WIFIDevice.h"
 #include		"ATOrg.h" 
+#include		"MPU6050.h"
 #include		"syn500r.h"
 #include		"EEPFlash.h"
 #include 		"stm32_flash.h"
@@ -23,6 +23,8 @@
 #include		"AT_Driver.h"
 #include 		"AT_Runing.h"
 #include		"PID.h"
+#include	  "EEPFlash.h"
+
 
 #define LED_OutMode   Port_In_Out(PortC,BIT3,GE_TW_2M)
 #define LED_ON        (PCout(3)=1)	

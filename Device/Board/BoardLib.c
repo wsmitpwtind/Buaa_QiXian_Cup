@@ -78,13 +78,14 @@ Btt0_InMode;
 Btt1_InMode; //°´¼ü
 BEEP_OutMode;
 BEEP_OFF;
+USART_Init(1,115200);
 	
 EEPFlashInit();
 EFile_DownLoad();
 ATCommInit();
 	
 I2C_Init(4000);
-OLED_Init();
+
 MotorDriveInit();
 ServoInit();
 PID_Init();

@@ -16,6 +16,7 @@ long GetPulseSpeed_B(void);
 long GetPulseSpeed_C(void);
 long GetPulseSpeed_D(void);
 
+void PIDParSPDUpdate(void);
 void PIDSPD_SinglePulse(void) ;  
 void PIDSpeed_SetGoal_A(int goal);
 void PIDSpeed_SetEnable_A(uchar En);

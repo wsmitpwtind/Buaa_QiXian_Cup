@@ -1,6 +1,6 @@
 #include "LXU_AtRISC.h"
 #include "DataProces.h"
-#include	<stdio.h>
+
 
 
 /*
@@ -114,7 +114,6 @@ AT指令字节接收流...
 
 uchar AT_Flow_ReceByte(uchar RxB)
 {
-		printf("|-----------AT_Flow_ReceByte-----------|\r\n");
 static uchar Step_Last=0;
 static uchar RxCNT=0;
 
@@ -204,7 +203,7 @@ uchar AT_ParaDncode(uchar Len,uchar * inP,_Type_OutForm * _OutF)
 uchar i=0,k;
 uchar Group=0;
 
-printf("|-----------AT_ParaDncode-----------|\r\n");
+
 long OutHexP=0;
 
 if(Len==0) //为AT
@@ -313,7 +312,7 @@ return AT_ParaDncode(AT_ParLen,AT_RunBuf, _OutF);
 */
 uchar AT_Packet(uchar iLen, uchar *inP,uchar * PackADD,uchar * PackLen)
 {
-printf("|-----------uchar AT_Packet-----------|\r\n");
+
 uchar i;
 uchar PackNum=1;
 uchar CNT=0;

@@ -1,43 +1,73 @@
 #include "BoardLib.h"
 
 
+sint memsBuf[6];
+
 
 void PS2Running(void);
 
 int main (void)
 {
-
+	
+	
+int i=0;
+	
 BoardInit();
+	
 
-//ShowString("<P2MDA-KM4> ",0,30,0);
-printf("P2MDA-KM4（STM32四电机驱动板）\r\n");;
+	
+printf("P2MDA-KM4（STM32四电机驱动板）\r\n");
+set_walkingmotor_speed(600,600,600,600);
+	
+Init_time();
 
+i=MPU6050_initialize();
+
+
+PID_Data_Recived(90,3,0);
+PIDParSPDUpdate();
+	
 while(1)
 {
-	if( WaitTrue(0,50) ) //50ms运行一次
+	
+	if( WaitTrue(0,200) ) //50ms运行一次
 	{
-		 printf("Begin\r\n");
-		 printf("|-----------GetMileage-----------|\r\n");
-		 GetMileage();		//用于计算里程
+		MPU6050_GetXYZ(memsBuf);
 	}
 	
-	if( WaitTrue(1,500) ) //200MS执行一次
+	//set_walkingmotor_speed(600,600,600,600);
+	if( TimeOn(3000) ) 
 	{
-		
-		//OLED显示
-//		ShowString("AR:       ",0,0,2);	ShowData(MotorRPM_A()/10,0,18,2);
-//		ShowString("AL:       ",0,64,2); ShowData(GetLinearVelocity_A(),0,82,2);
-//		
-//		ShowString("BR:       ",0,0,3);	ShowData(MotorRPM_B()/10,0,18,3);
-//		ShowString("BL:       ",0,64,3); ShowData(GetLinearVelocity_B(),0,82,3);
-//		
-//		ShowString("CR:       ",0,0,4);	ShowData(MotorRPM_C()/10,0,18,4);
-//		ShowString("CL:       ",0,64,4); ShowData(GetLinearVelocity_C(),0,82,4);
-//		
-//		ShowString("DR:       ",0,0,5);	ShowData(MotorRPM_D()/10,0,18,5);
-//		ShowString("DL:       ",0,64,5); ShowData(GetLinearVelocity_D(),0,82,5);
-//		
-		
+		set_walkingmotor_speed(0,0,0,0);
+//		MotA(0);	
+//		MotB(0);
+//		MotC(0);
+//		MotD(0);
+	}
+	if( TimeOn(5000) ) 
+	{
+		 set_walkingmotor_speed(-400,600,-400,600);
+	}
+	if( TimeOn(10000) ) 
+	{
+		 set_walkingmotor_speed(0,0,0,0);
+	}
+  if( TimeOn(12000) ) 
+	{
+		 set_walkingmotor_speed(600,600,600,600);
+	}
+	if( WaitTrue(0,50) ) //50ms运行一次
+	{
+
+		 GetMileage();		//用于计算里程
+		 //MPU6050_GetXYZ(memsBuf);
+		 //printf();
+	}
+	
+	if( WaitTrue(1,200) ) //200MS执行一次
+	{
+
+	
 		//串口打印
 		printf("A电机转速=%ld 转/s\r\n",MotorRPM_A()/10);
 		printf("A电机线速度=%d mm/s\r\n",GetLinearVelocity_A());
@@ -65,8 +95,9 @@ while(1)
 		
 	}
 	
-	AT_CommRunning();
+	//AT_CommRunning();
 	LedFlash();// LED闪烁
+	
 }
 
 }

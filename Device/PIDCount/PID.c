@@ -1,7 +1,6 @@
 #include	"PID.h"
 #include	"MotorDrive.h"
 #include	"EEPFlash.h"
-#include	<stdio.h>
 
 extern _TYPE_EEPROM_PACK SYS_Cfg;
 
@@ -33,7 +32,7 @@ PID参数更新，从SYS_Cfg更新最新数据到PIDParSPD或PIDParCT中
 void PIDParSPDUpdate(void)
 {
 //-----------------------------------
-			printf("|-----------PIDParSPDUpdate-----------|\r\n");
+		
 PIDParSPD_A.P=SYS_Cfg.P;
 PIDParSPD_A.I=SYS_Cfg.I;
 PIDParSPD_A.D=SYS_Cfg.D;
@@ -58,7 +57,7 @@ PIDParSPD_D.D=SYS_Cfg.D;
 //PID初始化部分
 void PID_Init(void)
 {
-				printf("|-----------PID_Init-----------|\r\n");
+
 PIDParSPDUpdate();
 
 PIDParSPD_A.Enable=0;
@@ -101,7 +100,7 @@ PID：		  PID结构体
 **********************************************/ 
 int PIDCalc(int NextPoint,struct PID *P) 
 {
-	printf("|-----------PIDCalc-----------|\r\n");
+
 	int dError=0,Error=0; 
 	long tempP=0;
 	long tempI=0;
@@ -149,7 +148,6 @@ long PulseSpeed_C=0;
 long PulseSpeed_D=0;
 long GetPulseSpeed_A(void)
 {
-		printf("|-----------GetPulseSpeed_A-----------|\r\n");
 	return PulseSpeed_A;
 }
 
@@ -173,7 +171,7 @@ long GetPulseSpeed_D(void)
 void PIDSPD_SinglePulse(void)   
 {
 	int temp=0;
-		printf("|-----------PIDSPD_SinglePulse-----------|\r\n");
+
 	
 	
 	 BeatHandle_Encoder();	//用于计算转速
@@ -243,7 +241,7 @@ En:=1开启PID配置
 *******************************************/
 void PIDSpeed_SetGoal_A(int goal)
 {
-	  printf("|-----------PIDSpeed_SetGoal_A-----------|\r\n");
+
 	PIDParSPD_A.SetGoal=goal;
 	if(goal==0)
 	{
@@ -254,7 +252,7 @@ void PIDSpeed_SetGoal_A(int goal)
 }
 void PIDSpeed_SetEnable_A(uchar En)
 {
-			printf("|-----------PIDSpeed_SetEnable_A-----------|\r\n");
+
 	PIDParSPD_A.SetGoal=0;
 	PIDParSPD_A.LastError=0;
 	PIDParSPD_A.PrevError=0;
