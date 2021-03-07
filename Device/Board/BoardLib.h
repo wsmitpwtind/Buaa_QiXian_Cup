@@ -24,6 +24,8 @@
 #include 		"AT_Runing.h"
 #include		"PID.h"
 #include	  "EEPFlash.h"
+#include    "imu.h"
+
 
 
 #define LED_OutMode   Port_In_Out(PortC,BIT3,GE_TW_2M)

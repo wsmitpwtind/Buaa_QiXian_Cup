@@ -6,7 +6,7 @@
 #include   "stm32f10x_Init.h"
 #include   "delay.h"  
 #include   "STM32_I2C.H"
-
+#include   "imu.h"
 
 /*
 #define Mpu6050_INT_inmode     Port_In_Out(PortC,BIT7,Updown_IN) //Êä³öÄ£Ê½ 10M 

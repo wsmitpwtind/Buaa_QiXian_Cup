@@ -18,6 +18,9 @@
 ".\lxu_atrisc.o"
 ".\pid.o"
 ".\mpu6050.o"
+".\imu.o"
+".\kalman.o"
+".\mymath.o"
 ".\stm32_i2c.o"
 --library_type=microlib --strict --scatter ".\ult.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

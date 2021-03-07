@@ -10,6 +10,10 @@ ulong LEDTRUNTime=LedFlashLOWTim;
 usint LEDTRUNCnt=0;
 usint LEDTRUNNum=0;
 
+_st_Mpu MPU6050;
+_st_AngE Angle;
+
+
 //keep，快闪的持续时间
 //CY，  快闪的半周期
 void LedFlashSET(usint Keep,usint CY)  //LED快闪 提示信息
@@ -69,8 +73,6 @@ int BoardInit(void)
 sys_Init();
 JTAG_ENable(1);
 SysTimeBase_Init(); //用于精确计时，获取系统时间
-
-
 	
 LED_OutMode; 
 LED_OFF;
@@ -95,6 +97,8 @@ SysTick_Init(); //系统滴答时钟，用于系统节拍
 
 KeyFiltUD_CLR(0);
 KeyFiltUD_CLR(1);
+
+
 return 0;
 }
 

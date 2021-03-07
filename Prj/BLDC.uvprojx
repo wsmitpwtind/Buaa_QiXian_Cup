@@ -523,6 +523,21 @@
               <FileType>1</FileType>
               <FilePath>..\Device\MEMS\MPU6050.c</FilePath>
             </File>
+            <File>
+              <FileName>imu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\MEMS\imu.c</FilePath>
+            </File>
+            <File>
+              <FileName>kalman.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\MEMS\kalman.c</FilePath>
+            </File>
+            <File>
+              <FileName>myMath.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Device\MEMS\myMath.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
